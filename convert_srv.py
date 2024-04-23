@@ -8,15 +8,16 @@ import requests
 from urllib.parse import urlparse, parse_qs
 
 from convert_glb import export_glb
+from get_local_ip import get_local_ip
 
 # Directory to save files
-SAVE_DIR = "D:/kicad-cli-python"
+SAVE_DIR = "D:/code/kicad-cli-python"
 KICAD_IMG_ID = "a37c2763212f"
 KICAD_IMG_HOME_PATH = "/home/kicad"
-SERVER_URL = "http://192.168.50.2:8000/"  # Change the URL as per your server configuration
+SERVER_URL = f"http://${get_local_ip()}:8000/"  # Change the URL as per your server configuration
 
 class FileUploadHandler(BaseHTTPRequestHandler):
-    
+
     def do_POST(self):
         content_length = int(self.headers['Content-Length'])
         # Read JSON content from request

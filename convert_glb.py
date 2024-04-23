@@ -64,20 +64,20 @@ def export_glb(root_sch_file_name):
     return os.path.join(kicad_project_dir, c_output_file_name).replace("\\", "/")
 
 
-def main():
-    import time
+# def main():
+#     import time
 
-    start_time = time.time()
+#     start_time = time.time()
 
-    unziped_prj_path = "/home/hq/kicad/complex_hierarchy"  # NOTE: Project folder needs to have write permission
-    pcb_fn = "video.kicad_pcb"
-    net_list = export_glb(os.path.join(unziped_prj_path, pcb_fn))
+#     unziped_prj_path = "/home/hq/kicad/complex_hierarchy"  # NOTE: Project folder needs to have write permission
+#     pcb_fn = "video.kicad_pcb"
+#     net_list = export_glb(os.path.join(unziped_prj_path, pcb_fn))
 
-    end_time = time.time()
-    execution_time = (end_time - start_time) * 1000  # Convert to milliseconds
+#     end_time = time.time()
+#     execution_time = (end_time - start_time) * 1000  # Convert to milliseconds
 
-    print(f"程序执行时间: {execution_time} 毫秒")
+#     print(f"程序执行时间: {execution_time} 毫秒")
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
