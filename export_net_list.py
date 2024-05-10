@@ -3,7 +3,7 @@ import subprocess
 import uuid
 import logging
 
-kicad_img_id = "8b2c01c7dc6e"
+kicad_img_id = "ghcr.io/liangtie/kicad:lite"
 kicad_img_home_path ="/home/kicad"
 
 '''
@@ -17,7 +17,7 @@ kicad_img_home_path ="/home/kicad"
 
 '''
 #
-def export_glb(root_sch_file_name):
+def export_net_list(root_sch_file_name):
     kicad_project_dir = os.path.dirname(root_sch_file_name)
     pcb_name = os.path.basename(root_sch_file_name)
     mounted_prj_path = os.path.join(kicad_img_home_path, str(uuid.uuid4())).replace("\\", "/")
@@ -81,7 +81,7 @@ def export_glb(root_sch_file_name):
 def main():
     import time
 
-    export_glb(r"D:/code/kicad-cli-python/video.kicad_sch")
+    export_net_list(r"D:/code/kicad-cli-python/video.kicad_sch")
 
 
 
