@@ -96,7 +96,7 @@ class FileUploadHandler(BaseHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Headers", "X-Requested-With")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.end_headers()
-        
+
 
 
 def run_server(port=8000):

@@ -30,7 +30,7 @@ def export_net_list(root_sch_file_name):
         "-v", f"{kicad_project_dir}:{mounted_prj_path}",
         kicad_img_id, 
         "kicad-cli", "sch",
-        "export", "netlist", "--format", "allegro",
+        "export", "netlist", "--format", "kicadxml",
         mouted_pcb_fp, "-o",
         f"{mounted_prj_path}/{output_file_name}"
     ]
@@ -81,7 +81,7 @@ def export_net_list(root_sch_file_name):
 def main():
     import time
 
-    export_net_list(r"D:/code/kicad-cli-python/video.kicad_sch")
+    export_net_list(r"D:/code/kicad-cli-python/pal-ntsc.kicad_sch")
 
 
 
