@@ -2,11 +2,14 @@ import os
 import subprocess
 import uuid
 import logging
+import time
 
 kicad_img_id = "a37c2763212f"
 kicad_img_home_path ="/home/kicad"
 
 def export_glb(root_sch_file_name):
+    enter_time = time.time()
+
     kicad_project_dir = os.path.dirname(root_sch_file_name)
     pcb_name = os.path.basename(root_sch_file_name)
     mounted_prj_path = os.path.join(kicad_img_home_path, str(uuid.uuid4())).replace("\\", "/")
@@ -23,6 +26,8 @@ def export_glb(root_sch_file_name):
                  ]
     print(" ".join(first_cmd))
 
+    start_time = time.time()
+
     try:
         process_export = subprocess.Popen(first_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         _, stderr = process_export.communicate()
@@ -36,6 +41,9 @@ def export_glb(root_sch_file_name):
     except Exception as e:
         logging.error(e)
 
+
+    print(f"Convert to glb Time taken: {time.time() - start_time} secs")
+
     c_output_file_name = str(uuid.uuid4()) + ".glb"
     c_docker_output_fn = os.path.join(mounted_prj_path, c_output_file_name).replace("\\", "/")
 
@@ -47,6 +55,8 @@ def export_glb(root_sch_file_name):
                   ]
 
     print(" ".join(second_cmd))
+
+    start_time = time.time()
 
     try:
         process_pack = subprocess.Popen(second_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -60,6 +70,11 @@ def export_glb(root_sch_file_name):
         process_pack.wait()
     except Exception as e:
         logging.error(e)
+
+    print(f"Compress glb {time.time() - start_time} secs")
+
+    print(f"PCB to glb  Time taken: {time.time() - enter_time} secs")
+
 
     return os.path.join(kicad_project_dir, c_output_file_name).replace("\\", "/")
 

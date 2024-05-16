@@ -22,7 +22,7 @@ EXT_TO_KICAD_CLI_ARG = {
 }
 
 
-def convert(ori_fp):
+def convert_kicad_to_ad(ori_fp):
     kicad_project_dir = os.path.dirname(ori_fp)
     ori_fn = os.path.basename(ori_fp)
 
@@ -65,8 +65,8 @@ def convert(ori_fp):
 def main():
     import time
 
-    convert("D:/code/kicad/build/out/ad/PWRMOD-001-RevA.SchDoc")
-    convert("D:/code/kicad/build/out/ad/PWRMOD-001-RevA.PcbDoc")
+    convert_kicad_to_ad("D:/code/kicad/build/out/ad/PWRMOD-001-RevA.SchDoc")
+    convert_kicad_to_ad("D:/code/kicad/build/out/ad/PWRMOD-001-RevA.PcbDoc")
 
 
 
