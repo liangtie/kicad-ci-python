@@ -3,12 +3,13 @@ import subprocess
 import uuid
 import logging
 
-kicad_img_id = "ghcr.io/liangtie/kicad:lite"
+from utils import KICAD_IMAGE_ID
+
 kicad_img_home_path ="/home/kicad"
 
 '''
         String[] firstCmd = { "docker", "run", "-v", kicad_project_dir + ":" + mounted_prj_path,
-                kicad_img_id, "kicad-cli", "sch",
+                KICAD_IMAGE_ID, "kicad-cli", "sch",
                 "export", "netlist", "--format", "allegro",
                 mouted_sch_root_path, "-o",
                 mounted_prj_path + "/" + output_file_name
@@ -28,7 +29,7 @@ def export_net_list(root_sch_file_name):
     first_cmd = [
         "docker", "run",
         "-v", f"{kicad_project_dir}:{mounted_prj_path}",
-        kicad_img_id, 
+        KICAD_IMAGE_ID, 
         "kicad-cli", "sch",
         "export", "netlist", "--format", "kicadxml",
         mouted_pcb_fp, "-o",
@@ -54,7 +55,7 @@ def export_net_list(root_sch_file_name):
     # c_docker_output_fn = os.path.join(mounted_prj_path, c_output_file_name).replace("\\", "/")
 
     # second_cmd = ["docker", "run", "-v", f"{kicad_project_dir}:{mounted_prj_path}",
-    #               kicad_img_id, "npx", "gltfpack",
+    #               KICAD_IMAGE_ID, "npx", "gltfpack",
     #               "-i",
     #               docker_output_fn, "-v", "-cc", "-tc", "-ts", "0.5", "-o",
     #               c_docker_output_fn

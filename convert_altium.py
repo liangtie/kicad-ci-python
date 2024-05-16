@@ -3,7 +3,8 @@ import subprocess
 import uuid
 import logging
 
-kicad_img_id = "ghcr.io/liangtie/kicad:lite"
+from utils import KICAD_IMAGE_ID
+
 kicad_img_home_path ="/home/kicad"
 
 # ./build/out/bin/kicad-cli.exe pcb convert --output ./build/out/kicad/foo.kicad_pcb ./build/out/ad/PWRMOD-001-RevA.PcbDoc
@@ -40,7 +41,7 @@ def convert_kicad_to_ad(ori_fp):
 
     first_cmd = ["docker", "run", "--rm",
                  "-v", f"{kicad_project_dir}:{mounted_prj_path}",
-                 kicad_img_id, "kicad-cli", EXT_TO_KICAD_CLI_ARG[ori_suffix],
+                 KICAD_IMAGE_ID, "kicad-cli", EXT_TO_KICAD_CLI_ARG[ori_suffix],
                  "convert", "--output", docker_output_fn,
                  mounted_fp
                  ]
