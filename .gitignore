@@ -3,3 +3,5 @@ __pycache__
 *.kicad_pcb
 *.js
 *.tar
+*.PcbDoc
+*.SchDoc

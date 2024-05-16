@@ -22,17 +22,17 @@ def export_net_list(root_sch_file_name):
     kicad_project_dir = os.path.dirname(root_sch_file_name)
     pcb_name = os.path.basename(root_sch_file_name)
     mounted_prj_path = os.path.join(kicad_img_home_path, str(uuid.uuid4())).replace("\\", "/")
-    mouted_pcb_fp = os.path.join(mounted_prj_path, pcb_name).replace("\\", "/")
+    mounted_pcb_fp = os.path.join(mounted_prj_path, pcb_name).replace("\\", "/")
     output_file_name = str(uuid.uuid4()) + ".txt"
     # docker_output_fn = os.path.join(mounted_prj_path, output_file_name).replace("\\", "/")
 
     first_cmd = [
         "docker", "run",
         "-v", f"{kicad_project_dir}:{mounted_prj_path}",
-        KICAD_IMAGE_ID, 
+        KICAD_IMAGE_ID,
         "kicad-cli", "sch",
         "export", "netlist", "--format", "kicadxml",
-        mouted_pcb_fp, "-o",
+        mounted_pcb_fp, "-o",
         f"{mounted_prj_path}/{output_file_name}"
     ]
 

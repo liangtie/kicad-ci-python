@@ -3,7 +3,8 @@ import subprocess
 import uuid
 import logging
 
-from utils import KICAD_IMAGE_ID
+KICAD_IMAGE_ID="ghcr.io/liangtie/kicad:lite"
+
 
 kicad_img_home_path ="/home/kicad"
 
@@ -23,7 +24,7 @@ EXT_TO_KICAD_CLI_ARG = {
 }
 
 
-def convert_kicad_to_ad(ori_fp):
+def convert_kicad_to_ad(ori_fp) ->str :
     kicad_project_dir = os.path.dirname(ori_fp)
     ori_fn = os.path.basename(ori_fp)
 
