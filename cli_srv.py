@@ -11,7 +11,6 @@ from get_local_ip import get_local_ip
 
 # Directory to save files
 CURRENT_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-KICAD_IMG_ID = "a37c2763212f"
 KICAD_IMG_HOME_PATH = "/home/kicad"
 SERVER_URL = f"http://{get_local_ip()}:8000/"  # Change the URL as per your server configuration
 
