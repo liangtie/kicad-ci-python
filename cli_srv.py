@@ -7,12 +7,13 @@ from convert_altium import convert_kicad_to_ad
 import cgi
 
 from convert_glb import export_glb
+from file_srv import FILE_SRV_PORT
 from get_local_ip import get_local_ip
 
 # Directory to save files
 CURRENT_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 KICAD_IMG_HOME_PATH = "/home/kicad"
-SERVER_URL = f"http://{get_local_ip()}:8000/"  # Change the URL as per your server configuration
+SERVER_URL = f"http://{get_local_ip()}:{FILE_SRV_PORT}/"  # Change the URL as per your server configuration
 
 class FileUploadHandler(BaseHTTPRequestHandler):
 
