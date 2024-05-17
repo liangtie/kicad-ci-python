@@ -1,8 +1,9 @@
 from http.server import SimpleHTTPRequestHandler
 import socketserver
 
+from utils import FILE_SRV_PORT
 
-FILE_SRV_PORT = 7676
+
 
 class CORSRequestHandler(SimpleHTTPRequestHandler):
     def end_headers(self):
