@@ -7,11 +7,10 @@ from convert_altium import convert_kicad_to_ad
 import cgi
 
 from convert_glb import export_glb
-from utils import FILE_SRV_PORT
+from utils import FILE_SRV_PORT, OUT_DIR
 from get_local_ip import get_local_ip
 
 # Directory to save files
-CURRENT_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 KICAD_IMG_HOME_PATH = "/home/kicad"
 SERVER_URL = f"http://{get_local_ip()}:{FILE_SRV_PORT}/"  # Change the URL as per your server configuration
 
@@ -52,7 +51,7 @@ class FileUploadHandler(BaseHTTPRequestHandler):
             return
 
         filename = str(uuid.uuid4()) + '.kicad_pcb'
-        file_path = os.path.join(CURRENT_SCRIPT_DIR, filename)
+        file_path = os.path.join(OUT_DIR, filename)
 
         try:
             with open(file_path, "w", encoding="gbk") as f:
@@ -91,7 +90,7 @@ class FileUploadHandler(BaseHTTPRequestHandler):
             saved_files = []
 
             for idx, fn in enumerate(files_names):
-                file_path = os.path.join(CURRENT_SCRIPT_DIR, fn)
+                file_path = os.path.join(OUT_DIR, fn)
                 with open(file_path, 'wb') as output_file:
                     output_file.write(files[idx])
                 saved_files.append(file_path)

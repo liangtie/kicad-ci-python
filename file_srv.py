@@ -1,9 +1,11 @@
 from http.server import SimpleHTTPRequestHandler
+import os
 import socketserver
 
-from utils import FILE_SRV_PORT
+from utils import FILE_SRV_PORT, OUT_DIR
 
-
+# cd to OUT_DIR
+os.chdir(OUT_DIR)
 
 class CORSRequestHandler(SimpleHTTPRequestHandler):
     def end_headers(self):
