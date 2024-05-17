@@ -3,7 +3,7 @@ import subprocess
 import uuid
 import logging
 
-from utils import KICAD_IMAGE_ID
+from utils import KICAD_FULL_IMAGE_ID
 
 kicad_img_home_path ="/home/kicad"
 
@@ -29,7 +29,7 @@ def export_net_list(root_sch_file_name):
     first_cmd = [
         "docker", "run",
         "-v", f"{kicad_project_dir}:{mounted_prj_path}",
-        KICAD_IMAGE_ID,
+        KICAD_FULL_IMAGE_ID,
         "kicad-cli", "sch",
         "export", "netlist", "--format", "kicadxml",
         mounted_pcb_fp, "-o",

@@ -4,7 +4,7 @@ import uuid
 import logging
 import time
 
-from utils import KICAD_IMAGE_ID
+from utils import KICAD_FULL_IMAGE_ID
 
 kicad_img_home_path ="/home/kicad"
 
@@ -20,7 +20,7 @@ def export_glb(root_sch_file_name):
 
     first_cmd = ["docker", "run",
                  "-v", f"{kicad_project_dir}:{mounted_prj_path}",
-                 KICAD_IMAGE_ID, "kicad-cli", "pcb",
+                 KICAD_FULL_IMAGE_ID, "kicad-cli", "pcb",
                  "export", "glb", "--subst-models", "--include-tracks",
                  mouted_pcb_fp, "-o",
                  docker_output_fn
@@ -49,7 +49,7 @@ def export_glb(root_sch_file_name):
     c_docker_output_fn = os.path.join(mounted_prj_path, c_output_file_name).replace("\\", "/")
 
     second_cmd = ["docker", "run", "-v", f"{kicad_project_dir}:{mounted_prj_path}",
-                  KICAD_IMAGE_ID, "npx", "gltfpack",
+                  KICAD_FULL_IMAGE_ID, "npx", "gltfpack",
                   "-i",
                   docker_output_fn, "-v", "-cc", "-tc", "-ts", "0.5", "-o",
                   c_docker_output_fn
