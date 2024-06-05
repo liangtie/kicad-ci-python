@@ -40,9 +40,7 @@ def convert_kicad_to_ad(ori_fp) ->str :
     output_file_name = converted_fn
     docker_output_fn = os.path.join(mounted_prj_path, output_file_name).replace("\\", "/")
 
-    first_cmd = ["docker", "run", "--rm",
-                 "-v", f"{kicad_project_dir}:{mounted_prj_path}",
-                 KICAD_LIGHT_IMAGE_ID, "kicad-cli", EXT_TO_KICAD_CLI_ARG[ori_suffix],
+    first_cmd = [ "kicad-cli", EXT_TO_KICAD_CLI_ARG[ori_suffix],
                  "convert", "--output", docker_output_fn,
                  mounted_fp
                  ]
