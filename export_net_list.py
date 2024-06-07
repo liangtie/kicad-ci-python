@@ -27,7 +27,7 @@ def export_net_list(root_sch_file_name):
     # docker_output_fn = os.path.join(mounted_prj_path, output_file_name).replace("\\", "/")
 
     first_cmd = [
-        "docker", "run",
+        "docker", "run", "--rm",
         "-v", f"{kicad_project_dir}:{mounted_prj_path}",
         KICAD_FULL_IMAGE_ID,
         "kicad-cli", "sch",

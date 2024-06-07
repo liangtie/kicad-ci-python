@@ -4,7 +4,7 @@ import uuid
 import logging
 import time
 
-from utils import KICAD_FULL_IMAGE_ID
+KICAD_FULL_IMAGE_ID = "0b46d0abf98c"
 
 kicad_img_home_path ="/home/kicad"
 
@@ -48,7 +48,7 @@ def export_glb(root_sch_file_name):
     c_output_file_name = str(uuid.uuid4()) + ".glb"
     c_docker_output_fn = os.path.join(mounted_prj_path, c_output_file_name).replace("\\", "/")
 
-    second_cmd = ["docker", "run", "-v", f"{kicad_project_dir}:{mounted_prj_path}",
+    second_cmd = ["docker", "run", "--rm", "-v", f"{kicad_project_dir}:{mounted_prj_path}",
                   KICAD_FULL_IMAGE_ID, "npx", "gltfpack",
                   "-i",
                   docker_output_fn, "-v", "-cc", "-tc", "-ts", "0.5", "-o",
@@ -85,7 +85,7 @@ def main():
 
     start_time = time.time()
 
-    export_glb("D:/code/kicad-cli-python/MiniPC.kicad_pcb")
+    export_glb("D:/code/kicad/build/out/ad/PWRMOD-001-RevA.kicad_pcb")
 
     end_time = time.time()
     execution_time = (end_time - start_time) * 1000  # Convert to milliseconds
