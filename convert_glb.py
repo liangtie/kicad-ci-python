@@ -18,7 +18,7 @@ def export_glb(root_sch_file_name):
     output_file_name = str(uuid.uuid4()) + ".glb"
     docker_output_fn = os.path.join(mounted_prj_path, output_file_name).replace("\\", "/")
 
-    first_cmd = ["docker", "run",
+    first_cmd = ["docker", "run", "--rm",
                  "-v", f"{kicad_project_dir}:{mounted_prj_path}",
                  KICAD_FULL_IMAGE_ID, "kicad-cli", "pcb",
                  "export", "glb", "--subst-models", "--include-tracks",
@@ -86,6 +86,8 @@ def main():
     start_time = time.time()
 
     export_glb("D:/code/kicad/build/out/ad/PWRMOD-001-RevA.kicad_pcb")
+    export_glb("D:/code/kicad/build/out/video/video.kicad_pcb")
+
 
     end_time = time.time()
     execution_time = (end_time - start_time) * 1000  # Convert to milliseconds
