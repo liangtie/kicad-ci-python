@@ -1,6 +1,6 @@
 import os
 
-KICAD_FULL_IMAGE_ID = "ghcr.io/liangtie/kicad:full"
+KICAD_FULL_IMAGE_ID = "d6c80fb8d23e"
 FILE_SRV_PORT = 7676
 
 OUT_DIR_NAME = "out"

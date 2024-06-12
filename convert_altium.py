@@ -67,8 +67,7 @@ def convert_kicad_to_ad(ori_fp) ->str :
 def main():
     import time
 
-    convert_kicad_to_ad("D:/code/kicad/build/out/ad/PWRMOD-001-RevA.SchDoc")
-    convert_kicad_to_ad("D:/code/kicad/build/out/ad/PWRMOD-001-RevA.PcbDoc")
+    convert_kicad_to_ad("D:/pcb_projects/Altium/large/MiniPC.PcbDoc")
 
 
 

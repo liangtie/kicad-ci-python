@@ -4,7 +4,8 @@ import uuid
 import logging
 import time
 
-KICAD_FULL_IMAGE_ID = "0b46d0abf98c"
+from utils import KICAD_FULL_IMAGE_ID
+
 
 kicad_img_home_path ="/home/kicad"
 
@@ -81,18 +82,10 @@ def export_glb(root_sch_file_name):
 
 
 def main():
-    import time
-
-    start_time = time.time()
-
-    export_glb("D:/code/kicad/build/out/ad/PWRMOD-001-RevA.kicad_pcb")
+    export_glb("D:/pcb_projects/Altium/large/MiniPC.kicad_pcb")
     export_glb("D:/code/kicad/build/out/video/video.kicad_pcb")
 
 
-    end_time = time.time()
-    execution_time = (end_time - start_time) * 1000  # Convert to milliseconds
-
-    print(f"程序执行时间: {execution_time} 毫秒")
 
 
 if __name__ == "__main__":
